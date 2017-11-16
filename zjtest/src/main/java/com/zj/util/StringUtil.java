@@ -1,4 +1,4 @@
-package com.zj.common.util;
+package com.zj.util;
 
 /**
  * Created by zhaojian on 2017/11/8.
