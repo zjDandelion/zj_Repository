@@ -1,4 +1,4 @@
-package com.zj.common.util;
+package com.zj.util;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
