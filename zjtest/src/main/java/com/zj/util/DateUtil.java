@@ -6,10 +6,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * 日期工具类
  * @ClassName: DateUtil
@@ -19,7 +15,8 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class DateUtil {
-    private static final Logger logger = LoggerFactory.getLogger(DateUtil.class);
+
+//    private static final Logger logger = LoggerFactory.getLogger(DateUtil.class);
 
     public static final String PATTERN_DATETIME_STANRD = "yyyy-MM-dd HH:mm:ss";
     public static final String PATTERN_DATE_STANRD = "yyyy-MM-dd";
@@ -39,7 +36,7 @@ public class DateUtil {
         }
         String usePattern = null;
         try {
-            if(StringUtils.isNotEmpty(pattern)){
+            if(StringUtil.isNotEmpty(pattern)){
                 usePattern = pattern;
             }else{
                 usePattern = PATTERN_DATETIME_STANRD;
@@ -47,7 +44,7 @@ public class DateUtil {
             SimpleDateFormat sdf = new SimpleDateFormat(usePattern);
             return sdf.format(date);
         } catch (Exception e) {
-            logger.error("Format Date:" + date + ", usePattern:{}" + usePattern, e);
+//            logger.error("Format Date:" + date + ", usePattern:{}" + usePattern, e);
             return null;
         }
     }
@@ -83,13 +80,13 @@ public class DateUtil {
      * @date
      */
     public static Date parse(String dateStr, String pattern) {
-        if (StringUtils.isEmpty(dateStr)) {
+        if (StringUtil.isEmpty(dateStr)) {
             return null;
         }
         String usePattern = null;
         try {
             dateStr = dateStr.trim();
-            if (StringUtils.isNotEmpty(pattern)) {
+            if (StringUtil.isNotEmpty(pattern)) {
                 usePattern = pattern;
             } else if (dateStr.length() == 10) {
                 usePattern = PATTERN_DATE_STANRD;
@@ -101,7 +98,7 @@ public class DateUtil {
             SimpleDateFormat sdf = new SimpleDateFormat(usePattern);
             return sdf.parse(dateStr);
         } catch (ParseException e) {
-            logger.error("Parse Date:" + dateStr + ", usePattern:" + usePattern, e);
+//            logger.error("Parse Date:" + dateStr + ", usePattern:" + usePattern, e);
             return null;
         }
     }
@@ -394,7 +391,7 @@ public class DateUtil {
     public static int compTime(String s1, String s2) {
         try {
             if (s1.indexOf(":") < 0 || s1.indexOf(":") < 0) {
-                logger.error("Date Pattern Err...");
+//                logger.error("Date Pattern Err...");
             } else {
                 String[] array1 = s1.split(":");
                 int total1 = Integer.valueOf(array1[0]) * 3600 + Integer.valueOf(array1[1]) * 60;
@@ -410,7 +407,7 @@ public class DateUtil {
             }
         } catch (NumberFormatException e) {
 
-            logger.error("compTime err...msg:{}", e.getMessage());
+//            logger.error("compTime err...msg:{}", e.getMessage());
         }
         return 0;
     }
